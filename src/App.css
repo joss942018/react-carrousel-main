@@ -1,0 +1,16 @@
+.app-container {
+  width: 50%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  padding: 0 4rem;
+}
+
+.image {
+  width: 500px;
+}
