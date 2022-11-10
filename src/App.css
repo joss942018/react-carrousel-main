@@ -14,3 +14,13 @@ ul {
 .image {
   width: 500px;
 }
+
+.btn-agregar {
+  margin-top: 40px;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}

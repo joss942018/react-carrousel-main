@@ -8,6 +8,16 @@ export default class Carrusel extends Component {
 
   ultimoIndiceDeComponente = this.props.childComponents.length - 1
 
+  componentDidUpdate(prevProps) {
+    if (this.props.childComponents.length > prevProps.childComponents.length) {
+      alert('Se montó componente')
+    }
+    if (this.props.childComponents.length < prevProps.childComponents.length) {
+      alert('Se quitó componente')
+    }
+    this.ultimoIndiceDeComponente = this.props.childComponents.length - 1
+  }
+
   clicDerecha = () => {
     if (
       this.state.indiceDeComponenteMostrado === this.ultimoIndiceDeComponente

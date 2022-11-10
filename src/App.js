@@ -2,24 +2,67 @@ import React, { Component } from 'react'
 import Carrusel from './components/Carrusel'
 
 import './App.css'
+import BotonContador from './components/BotonContador'
 
 class App extends Component {
+  state = {
+    carruselChildComponents: [
+      <ExampleComponentOne />,
+      <ExampleComponentTwo />,
+      <ExampleComponentThree />,
+    ],
+  }
+
+  agregarComponenteFuncionalACarrusel = () => {
+    this.setState({
+      carruselChildComponents: [
+        ...this.state.carruselChildComponents,
+        <FunctionalComponent />,
+      ],
+    })
+  }
+
+  quitarComponenteFuncionalACarrusel = () => {
+    this.setState({
+      carruselChildComponents: [
+        ...this.state.carruselChildComponents.slice(
+          0,
+          this.state.carruselChildComponents.length - 1
+        ),
+      ],
+    })
+  }
+
   render() {
     return (
       <div className='app-container'>
-        <Carrusel
-          childComponents={[
-            <ExampleComponentOne />,
-            <ExampleComponentTwo />,
-            <ExampleComponentThree />,
-          ]}
-        />
+        <Carrusel childComponents={this.state.carruselChildComponents} />
+        <button
+          className='btn-agregar'
+          onClick={this.agregarComponenteFuncionalACarrusel}
+        >
+          Agregar componente funcional a carrusel
+        </button>
+        <button
+          className='btn-agregar'
+          style={{ marginLeft: '8px' }}
+          onClick={this.quitarComponenteFuncionalACarrusel}
+        >
+          Quitar componente funcional a carrusel
+        </button>
+        <div>
+          <BotonContador />
+        </div>
       </div>
     )
   }
 }
 
 export default App
+
+function FunctionalComponent() {
+  return <div style={{ marginLeft: '60px' }}>Componente funcional</div>
+}
 
 class ExampleComponentOne extends Component {
   render() {
